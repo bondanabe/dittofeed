@@ -86,6 +86,7 @@ services:
       POSTGRES_SEEDS: postgres
       DYNAMIC_CONFIG_FILE_PATH: config/dynamicconfig/prod.yaml
     volumes:
+      - /opt/techway/clickhouse/zz-logging.xml:/etc/clickhouse-server/config.d/zz-logging.xml:ro
       - ./packages/backend-lib/temporal-dynamicconfig:/etc/temporal/config/dynamicconfig:ro
 
 volumes:
