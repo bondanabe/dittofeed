@@ -42,6 +42,7 @@ services:
       resources:
         limits:
           memory: 1024M
+          cpus: "1.0"
 
   postgres:
     image: postgres:15
