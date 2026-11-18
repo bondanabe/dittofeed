@@ -73,6 +73,7 @@ services:
       resources:
         limits:
           memory: 2048M
+          cpus: "1.0"
 
   temporal:
     image: temporalio/auto-setup:1.22.4
