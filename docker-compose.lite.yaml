@@ -67,6 +67,7 @@ services:
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - clickhouse_logs:/var/log/clickhouse-server
+      - /opt/techway/clickhouse/zz-logging.xml:/etc/clickhouse-server/config.d/zz-logging.xml:ro
     deploy:
       resources:
         limits:
