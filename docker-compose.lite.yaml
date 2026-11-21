@@ -24,6 +24,7 @@ x-backend-app-env: &backend-app-env
 services:
   lite:
     image: dittofeed/dittofeed-lite:v0.23.0
+    cpus: "0.75"
     restart: unless-stopped
     command: node --max-old-space-size=${LITE_MEM_LIMIT:-824} ./packages/lite/dist/scripts/startLite.js --workspace-name=${WORKSPACE_NAME:-Default}
     environment:
@@ -42,10 +43,11 @@ services:
       resources:
         limits:
           memory: 1024M
-          cpus: "1.0"
+          cpus: "0.75"
 
   postgres:
     image: postgres:15
+    cpus: "0.40"
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${DATABASE_USER:-postgres}
@@ -62,6 +64,7 @@ services:
 
   clickhouse-server:
     image: clickhouse/clickhouse-server:24.12.6.70-alpine
+    cpus: "0.75"
     restart: unless-stopped
     environment:
       <<: *clickhouse-credentials
@@ -73,10 +76,11 @@ services:
       resources:
         limits:
           memory: 2048M
-          cpus: "1.0"
+          cpus: "0.75"
 
   temporal:
     image: temporalio/auto-setup:1.22.4
+    cpus: "0.50"
     restart: unless-stopped
     depends_on:
       postgres:
